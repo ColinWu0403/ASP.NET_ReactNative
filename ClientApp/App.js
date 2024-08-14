@@ -1,25 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import * as React from "react";
+import { StatusBar } from "expo-status-bar";
+import { Text, View } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import { NativeWindStyleSheet } from "nativewind";
+
+// Pages
+import HomePage from "./src/pages/HomePage";
+import NotFoundPage from "./src/pages/NotFoundPage";
+
+// Set Global TailwindCSS Stylesheet
 NativeWindStyleSheet.setOutput({
-    default: "native",
+  default: "native",
 });
 
-
 export default function App() {
+  const Stack = createStackNavigator();
+
   return (
-    <View className="flex w-full align-center justify-center bg-amber-50">
-      <Text className="text-2xl font-bold text-center">Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false, // Hide header for a cleaner UI
+        }}
+      >
+        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="NotFound" component={NotFoundPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
