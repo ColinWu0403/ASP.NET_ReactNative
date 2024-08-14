@@ -2,10 +2,18 @@ using MongoDB.Driver;
 
 namespace SimpleWebAppReact.Services;
 
+/// <summary>
+/// MongoDB Service
+/// </summary>
 public class MongoDbService
 {
     private readonly IConfiguration _configuration;
     private readonly IMongoDatabase? _database;
+    
+    /// <summary>
+    /// constructor connects to database
+    /// </summary>
+    /// <param name="configuration"></param>
     public MongoDbService(IConfiguration configuration)
     {
         _configuration = configuration;

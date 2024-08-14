@@ -1,7 +1,14 @@
 namespace SimpleWebAppReact;
 
+/// <summary>
+/// runs startup commands, builds front end, CORS
+/// </summary>
 public class Startup
 {
+    /// <summary>
+    /// start up
+    /// </summary>
+    /// <param name="configuration"></param>
     public Startup(IConfiguration configuration)
     {
     }

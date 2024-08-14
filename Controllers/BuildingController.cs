@@ -6,6 +6,9 @@ using SimpleWebAppReact.Services;
 
 namespace SimpleWebAppReact.Controllers
 {
+    /// <summary>
+    /// Defines endpoints for operations relating the Building table
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class BuildingController : ControllerBase
@@ -19,6 +22,12 @@ namespace SimpleWebAppReact.Controllers
             _buildings = mongoDbService.Database?.GetCollection<Building>("building");
         }
 
+        /// <summary>
+        /// gets buildings, with optional query parameters
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<IEnumerable<Building>> Get([FromQuery] string? name = null, [FromQuery] string? address = null)
         {
@@ -42,6 +51,11 @@ namespace SimpleWebAppReact.Controllers
             return await _buildings.Find(filter).ToListAsync();
         }
 
+        /// <summary>
+        /// gets specific building with id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Building?>> GetById(string id)
         {
@@ -50,6 +64,11 @@ namespace SimpleWebAppReact.Controllers
             return building is not null ? Ok(building) : NotFound();
         }
 
+        /// <summary>
+        /// adds building entry to table
+        /// </summary>
+        /// <param name="building"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult> Post(Building building)
         {
@@ -58,6 +77,11 @@ namespace SimpleWebAppReact.Controllers
             
         }
 
+        /// <summary>
+        /// updates a building entry
+        /// </summary>
+        /// <param name="building"></param>
+        /// <returns></returns>
         [HttpPut]
         public async Task<ActionResult> Update(Building building)
         {
@@ -66,6 +90,11 @@ namespace SimpleWebAppReact.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// deletes a building entry
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(string id)
         {
