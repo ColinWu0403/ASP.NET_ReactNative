@@ -19,10 +19,27 @@ namespace SimpleWebAppReact.Controllers
             _buildings = mongoDbService.Database?.GetCollection<Building>("building");
         }
 
-        [HttpGet] // Define the route for this action
-        public async Task<IEnumerable<Building>> Get()
+        [HttpGet]
+        public async Task<IEnumerable<Building>> Get([FromQuery] string? name = null, [FromQuery] string? address = null)
         {
-            return await _buildings.Find(FilterDefinition<Building>.Empty).ToListAsync();
+            // Build the filter using a filter builder
+            var filterBuilder = Builders<Building>.Filter;
+            var filter = FilterDefinition<Building>.Empty;
+
+            // Apply the name filter if the parameter is provided
+            if (!string.IsNullOrEmpty(name))
+            {
+                filter &= filterBuilder.Eq(b => b.Name, name);
+            }
+
+            // Apply the address filter if the parameter is provided
+            if (!string.IsNullOrEmpty(address))
+            {
+                filter &= filterBuilder.Eq(b => b.Address, address);
+            }
+
+            // Fetch the buildings from the database using the filter
+            return await _buildings.Find(filter).ToListAsync();
         }
 
         [HttpGet("{id}")]
