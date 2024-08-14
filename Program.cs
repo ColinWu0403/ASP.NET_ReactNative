@@ -3,9 +3,8 @@ using SimpleWebAppReact.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Run npm install and npm run build to build the React app
+// Run npm install for the React Native app
 RunNpmInstall();
-RunNpmBuild();
 
 // Add logging configuration
 builder.Logging.AddConsole(); // Enable console logging
@@ -58,22 +57,23 @@ void RunNpmInstall()
     RunProcess(processInfo);
 }
 
-void RunNpmBuild()
-{
-    var npmCommand = GetNpmCommand();
-    var processInfo = new ProcessStartInfo
-    {
-        FileName = npmCommand,
-        Arguments = "run build",
-        WorkingDirectory = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp"),
-        RedirectStandardOutput = true,
-        RedirectStandardError = true,
-        UseShellExecute = false,
-        CreateNoWindow = true
-    };
+// This doesn't work, can't build React Native like this lol
+// void RunNpmBuild() 
+// {
+//     var npmCommand = GetNpmCommand();
+//     var processInfo = new ProcessStartInfo
+//     {
+//         FileName = npmCommand,
+//         Arguments = "run build",
+//         WorkingDirectory = Path.Combine(Directory.GetCurrentDirectory(), "ClientApp"),
+//         RedirectStandardOutput = true,
+//         RedirectStandardError = true,
+//         UseShellExecute = false,
+//         CreateNoWindow = true
+//     };
 
-    RunProcess(processInfo);
-}
+//     RunProcess(processInfo);
+// }
 
 string GetNpmCommand()
 {
