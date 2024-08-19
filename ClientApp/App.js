@@ -8,6 +8,7 @@ import { NativeWindStyleSheet } from "nativewind";
 // Pages
 import HomePage from "./src/pages/HomePage";
 import NotFoundPage from "./src/pages/NotFoundPage";
+import MapPage from "./src/pages/MapPage";
 
 // Set Global TailwindCSS Stylesheet
 NativeWindStyleSheet.setOutput({
@@ -26,6 +27,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="Map" component={MapPage} />
         <Stack.Screen name="NotFound" component={NotFoundPage} />
       </Stack.Navigator>
     </NavigationContainer>

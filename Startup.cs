@@ -17,7 +17,7 @@ public class Startup
     {
         services.AddControllers();
 
-        // Configure CORS to allow requests from your React frontend
+        // Configure CORS to allow requests from React Native frontend
         services.AddCors(options =>
         {
             options.AddPolicy("AllowAll", builder =>
