@@ -8,6 +8,10 @@ builder.Logging.AddConsole(); // Enable console logging
 
 // Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<MongoDbService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,9 +36,6 @@ app.UseEndpoints(endpoints =>
     endpoints.MapFallbackToFile("/index.html"); // This will serve index.html for any routes not handled by the controller
 });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<MongoDbService>();
 
 app.UseSwagger();
 app.UseSwaggerUI();
