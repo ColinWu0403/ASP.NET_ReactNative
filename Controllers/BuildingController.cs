@@ -59,6 +59,12 @@ namespace SimpleWebAppReact.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Building?>> GetById(string id)
         {
+            // Simple validation to check if the ID is not null
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("Invalid ID format.");
+            }
+            
             var filter = Builders<Building>.Filter.Eq(x => x.Id, id);
             var building = _buildings.Find(filter).FirstOrDefault();
             return building is not null ? Ok(building) : NotFound();
