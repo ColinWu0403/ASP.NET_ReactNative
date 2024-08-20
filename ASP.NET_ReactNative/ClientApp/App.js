@@ -23,11 +23,11 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerShown: false, // Hide header for a cleaner UI
+          headerShown: true, // Hide header for a cleaner UI
         }}
       >
         <Stack.Screen name="Home" component={HomePage} />
-        <Stack.Screen name="Map" component={MapPage} />
+        <Stack.Screen name="React Native Maps" component={MapPage} />
         <Stack.Screen name="NotFound" component={NotFoundPage} />
       </Stack.Navigator>
     </NavigationContainer>

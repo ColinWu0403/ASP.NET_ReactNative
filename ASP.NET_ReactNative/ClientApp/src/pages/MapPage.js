@@ -4,9 +4,9 @@ import CustomMap from "../components/CustomMap";
 
 export default function MapPage() {
   const [markerPosition, setMarkerPosition] = useState({
-    latitude: 40.42382047835122,
-    longitude: -86.92125022135261,
-  });
+    latitude: 40.424925486930064,
+    longitude: -86.91358246116509,
+  }); //40.424925486930064, -86.91358246116509
   const [buildingData, setBuildingData] = useState(null);
 
   const buildingId = "66ba8693354b31489f8e95b6"; // Example ID
