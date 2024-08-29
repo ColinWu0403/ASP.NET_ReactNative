@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import CustomButton from "../components/CustomButton";
 
 export default function NotFoundPage() {
@@ -8,11 +8,9 @@ export default function NotFoundPage() {
   };
 
   return (
-    <View className="flex-1 justify-center items-center bg-red-50">
-      <Text className="text-2xl font-bold text-center text-red-500">
-        404 - Page Not Found
-      </Text>
-      <View className="items-center justify-center mt-4">
+    <View style={styles.container}>
+      <Text style={styles.titleText}>404 - Page Not Found</Text>
+      <View style={styles.buttonContainer}>
         <CustomButton
           initialText="Back to Home Page"
           updatedText="Returning..."
@@ -22,3 +20,23 @@ export default function NotFoundPage() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#FEF2F2", // Equivalent to bg-red-50
+  },
+  titleText: {
+    fontSize: 24, // Equivalent to text-2xl
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#EF4444", // Equivalent to text-red-500
+  },
+  buttonContainer: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 16, // Equivalent to mt-4
+  },
+});

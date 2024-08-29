@@ -3,17 +3,11 @@ import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { NativeWindStyleSheet } from "nativewind";
 
 // Pages
 import HomePage from "./src/pages/HomePage";
 import NotFoundPage from "./src/pages/NotFoundPage";
 import MapPage from "./src/pages/MapPage";
-
-// Set Global TailwindCSS Stylesheet
-NativeWindStyleSheet.setOutput({
-  default: "native",
-});
 
 export default function App() {
   const Stack = createStackNavigator();
