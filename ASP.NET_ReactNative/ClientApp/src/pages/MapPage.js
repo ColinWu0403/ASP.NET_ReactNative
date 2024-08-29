@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import CustomMap from "../components/CustomMap";
 
 export default function MapPage() {
   const [markerPosition, setMarkerPosition] = useState({
     latitude: 40.424925486930064,
     longitude: -86.91358246116509,
-  }); //40.424925486930064, -86.91358246116509
+  });
   const [buildingData, setBuildingData] = useState(null);
 
-  const buildingId = "66ba8693354b31489f8e95b6"; // Example ID
+  const buildingId = "66ba8693354b31489f8e95b6";
 
-  // does not work on any other device, will try to deploy a backend so I can call that instead
   const handleMapPress = async (coordinate) => {
     try {
       const response = await fetch(
-        `https://localhost:5128/api/building/${buildingId}`
+        `https://aspdotnet.dev.sigapp.club/api/building/${buildingId}`
       );
       const data = await response.json();
       setBuildingData(data);
@@ -30,22 +29,62 @@ export default function MapPage() {
   };
 
   return (
-    <View className="flex-1 justify-center align-center bg-green-100">
+    <View style={styles.container}>
       <CustomMap markerPosition={markerPosition} onMapPress={handleMapPress} />
       {buildingData && (
-        <View className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white p-4 rounded-lg shadow-md">
+        <View style={styles.popup}>
           <TouchableOpacity
             onPress={handleClosePopup}
-            className="absolute top-2 right-2"
+            style={styles.closeButton}
           >
-            <Text className="text-red-500 text-lg font-bold">x</Text>
+            <Text style={styles.closeText}>x</Text>
           </TouchableOpacity>
-          <Text className="text-black text-lg font-bold">
-            {buildingData.name}
-          </Text>
-          <Text className="text-black text-sm">{buildingData.address}</Text>
+          <View>
+            <Text style={styles.buildingName}>{buildingData.name}</Text>
+            <Text style={styles.buildingAddress}>{buildingData.address}</Text>
+          </View>
         </View>
       )}
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#D1FAE5", // Equivalent to bg-green-100
+  },
+  popup: {
+    position: "absolute",
+    bottom: 16,
+    left: "50%",
+    transform: [{ translateX: -150 }],
+    backgroundColor: "white",
+    padding: 16,
+    borderRadius: 8,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    width: 300,
+  },
+  closeButton: {
+    position: "absolute",
+    top: 8,
+    right: 8,
+  },
+  closeText: {
+    color: "#EF4444", // Equivalent to text-red-500
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  buildingName: {
+    color: "black",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  buildingAddress: {
+    color: "black",
+    fontSize: 16,
+  },
+});
