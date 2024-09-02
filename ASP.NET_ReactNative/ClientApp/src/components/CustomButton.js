@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, Pressable } from "react-native";
+import { Text, Pressable, StyleSheet } from "react-native";
 
 // Reusable submit button component
 // initialText: Text to display when the button is first rendered
@@ -16,15 +16,28 @@ const CustomButton = ({ initialText, updatedText, onPress }) => {
   };
 
   return (
-    <Pressable
-      className="bg-green-500 w-60 py-[10px] px-[50px] rounded-[7px]"
-      onPress={handlePress}
-    >
-      <Text className="font-medium text-white text-[18px] text-center">
-        {buttonText}
-      </Text>
+    <Pressable style={styles.button} onPress={handlePress}>
+      <Text style={styles.buttonText}>{buttonText}</Text>
     </Pressable>
   );
 };
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: "#38a169",
+    width: 240,
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+    borderRadius: 7,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    fontWeight: "500",
+    color: "#ffffff",
+    fontSize: 18,
+    textAlign: "center",
+  },
+});
 
 export default CustomButton;
