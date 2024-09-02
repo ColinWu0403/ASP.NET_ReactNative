@@ -1,8 +1,8 @@
 # ASP.NET Core 6.0 + React Native + MongoDB
 
-This is a example implementation of a ASP.NET Core 6.0 webserver with React Native with Expo served as the frontend and MongoDB as the databse.
+This is an example implementation of an ASP.NET Core 6.0 webserver with React Native with Expo serving as the frontend and MongoDB as the database.
 
-The `ASP.NET_ReactNative/` directory contains the project, `Tests/` contains tests for the project.
+The `ASP.NET_ReactNative/` directory contains the project, and `Tests/` includes tests for the project.
 
 #### Install required dependencies:
 
