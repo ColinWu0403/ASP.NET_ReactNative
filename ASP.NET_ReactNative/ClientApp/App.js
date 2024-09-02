@@ -5,9 +5,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 // Pages
-import HomePage from "./src/pages/HomePage";
-import NotFoundPage from "./src/pages/NotFoundPage";
-import MapPage from "./src/pages/MapPage";
+import HomePage from "./src/screens/HomePage";
+import NotFoundPage from "./src/screens/NotFoundPage";
+import MapPage from "./src/screens/MapPage";
 
 export default function App() {
   const Stack = createStackNavigator();
