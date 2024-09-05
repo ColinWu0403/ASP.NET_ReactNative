@@ -14,7 +14,10 @@ export default function MapPage() {
   const handleMapPress = async (coordinate) => {
     try {
       const response = await fetch(
-        `https://aspdotnet.dev.sigapp.club/api/building/${buildingId}`
+        `https://aspdotnet.dev.sigapp.club/api/building/${buildingId}`,
+        {
+          method: "GET",
+        }
       );
       const data = await response.json();
       setBuildingData(data);
