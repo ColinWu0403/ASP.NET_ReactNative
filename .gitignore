@@ -32,7 +32,6 @@ npm-debug.*
 *.key
 *.mobileprovision
 *.orig.*
-.env
 .expo/
 obj
 bin
