@@ -1,6 +1,4 @@
 import * as React from "react";
-import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -17,7 +15,7 @@ export default function App() {
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
-          headerShown: true, // Hide header for a cleaner UI
+          headerShown: true, // Set to false to hide header
         }}
       >
         <Stack.Screen name="Home" component={HomePage} />
